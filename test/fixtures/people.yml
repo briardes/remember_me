@@ -8,4 +8,4 @@ one:
 two:
   name: MyString
   defining_feature: MyString
-  friend: false
+  friend: true

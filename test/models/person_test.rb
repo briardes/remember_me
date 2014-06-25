@@ -2,22 +2,22 @@ require 'test_helper'
 
 class PersonTest < ActiveSupport::TestCase
   test 'person has a name' do
-    person = Person.create(name: 'test')
-    assert person.name = 'test'
+    person = people(:one)
+    assert person.name == 'MyString'
   end
 
   test 'person has a defining_feature' do
-    person = Person.create(defining_feature: 'test')
-    assert person.defining_feature = 'test'
+    person = people(:one)
+    assert person.defining_feature == 'MyString'
   end
 
   test 'person can be a friend' do
-    person = Person.create(friend: true)
-    assert person.friend = true
+    person = people(:two)
+    assert person.friend
   end
 
   test 'person can be searched' do
-    Person.new(defining_feature: 'Likes Cats')
-    assert Person.search_features('Likes Cats')
+    Person.create!(defining_feature: 'Likes Cats', name: 'MyString')
+    assert_equal 1, Person.search_features('Likes Cats').count
   end
 end
